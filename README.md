@@ -17,6 +17,14 @@ node --test test/catalog.test.cjs
 python3 scripts/package.py
 ```
 
-打包使用显式文件白名单、固定时间戳和 Unix 权限；ZIP 只包含档案、无工具入口、MIT 与说明文档。`dist/` 被 Git 忽略。本轮不上传包，不发布市场或 Release，不调用真实模型或余额接口。源码推送与宿主集成验收分别记录。
+打包使用显式文件白名单、固定时间戳和 Unix 权限；ZIP 只包含档案、无工具入口、MIT 与说明文档。`dist/` 被 Git 忽略。正式安装包通过 [GitHub Release](https://github.com/skyelan1999/aide-pkg-DeepSeekSupporter/releases/tag/v0.1.0) 和 [官方插件市场](https://skyelan1999.github.io/aide-pkg-shop/) 分发；两处使用同一份 ZIP 和 SHA-256。测试不调用真实模型或余额接口，源码检查与真实账户验收分别记录。
 
 来源及实现边界见 [调研记录](docs/RESEARCH-20261022.md)。
+
+## 安装与版本 / Installation and release
+
+在 Aide 的插件市场搜索 `DeepSeekSupporter` 或 `deepseek-supporter`，安装后启用；也可下载 Release 的 ZIP，在插件面板导入。需要 Aide 0.1.17.5 RC5 或更新版本中的 providerSupport protocol 1 适配。凭证和按 Key/模型的覆盖费率仍由宿主管理。
+
+The same architecture-independent ZIP is distributed through GitHub Releases and the official marketplace. Install and enable it in Aide; Aide owns credentials, matching, pricing and balance requests. This MIT plugin is not an official DeepSeek product. Its offline tariff snapshot is dated 2026-10-22 and was checked against the official pricing page again on 2026-10-26. It does not automatically fetch new prices, cover Search/Fetch charges, or guarantee billing reconciliation. Unknown endpoints/models retain host-configured rates. No real account or paid request was used for this release's tests.
+
+下载 `SHA256SUMS` 后可执行 `shasum -a 256 -c SHA256SUMS`。市场包与 Release 包的摘要应一致。
